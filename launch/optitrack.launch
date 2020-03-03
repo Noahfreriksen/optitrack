@@ -1,0 +1,18 @@
+<launch>
+   # IP adress of the optitrack computer
+   <arg name="server" default="10.0.1.181"/>
+   <node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" output="screen">
+      <rosparam subst_value="true">
+         server: $(arg server)
+         port: 3883
+         frame_id: world
+         use_server_time: false
+         broadcast_tf: true
+         # Must either specify refresh frequency > 0.0, or a list of trackers to create refresh_tracker_frequency: 1.0
+         #trackers:
+         #- FirstTracker
+         #- SecondTracker
+      </rosparam>
+   </node>
+
+</launch>
